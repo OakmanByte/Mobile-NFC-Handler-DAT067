@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundColour"
+    android:fontFamily="@font/roboto"
     tools:context=".ui.showCards.ShowCardsActivity">
 
     <Button
@@ -14,7 +15,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="Button"
+        android:text="@string/returnButton"
         app:backgroundTint="@color/ButtonColour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

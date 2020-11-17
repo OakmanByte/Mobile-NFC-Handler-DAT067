@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundColour"
+    android:fontFamily="@font/roboto"
     tools:context=".ui.addCards.AddCardActivity">
 
     <Button
@@ -36,11 +37,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="343dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCardInActivityButton"
-        app:srcCompat="@drawable/nfc_ph" />
+        app:layout_constraintVertical_bias="0.485"
+        app:srcCompat="@drawable/nfc_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

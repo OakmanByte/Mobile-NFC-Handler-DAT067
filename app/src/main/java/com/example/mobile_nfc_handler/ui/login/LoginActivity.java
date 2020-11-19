@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
+import com.google.firebase.FirebaseApp;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);

@@ -28,7 +28,7 @@
         android:id="@+id/addCardInActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="312dp"
         android:text="@string/AddCardButton"
         app:backgroundTint="@color/ButtonColour"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,4 +46,54 @@
         app:layout_constraintTop_toBottomOf="@+id/addCardInActivityButton"
         app:layout_constraintVertical_bias="0.485"
         app:srcCompat="@drawable/nfc_logo" />
+
+
+    <Button
+        android:id="@+id/writeToTag"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/messageToWrite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/message_write_tag"
+        app:layout_constraintBottom_toTopOf="@+id/messageToWrite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/messageToWrite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="79dp"
+        android:ems="10"
+        android:hint="@string/hint_message"
+        app:layout_constraintBottom_toTopOf="@+id/addCardInActivityButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/writeToTag"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/readTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="READ NFC TAG"
+        app:layout_constraintBottom_toTopOf="@+id/messageToWrite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintStart_toEndOf="@+id/writeToTag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.823" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,4 +22,6 @@
     <string name="ShowCardButton">Show Card</string>
     <string name="AddCardButton">Add Card</string>
     <string name="Logout" />
+    <string name="login_text">Sign In</string>
+    <string name="register_text">Register</string>
 </resources>

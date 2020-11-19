@@ -2,6 +2,7 @@ package com.example.mobile_nfc_handler.data;
 
 import androidx.annotation.NonNull;
 
+import com.example.mobile_nfc_handler.generic.Result;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,7 +14,7 @@ import java.io.IOException;
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-public class LoginDataSource {
+public class LoginAuthentication {
 
     private DatabaseReference reference;
     private String dbPassword;

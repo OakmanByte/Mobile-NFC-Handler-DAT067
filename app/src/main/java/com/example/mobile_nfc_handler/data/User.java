@@ -17,7 +17,6 @@ public class User {
     public User (){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
-
     /**
      *
      * @param userName
@@ -31,5 +30,4 @@ public class User {
         this.password = password;
         this.admin = admin;
     }
-
 }

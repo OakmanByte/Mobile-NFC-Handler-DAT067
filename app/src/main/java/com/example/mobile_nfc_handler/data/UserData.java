@@ -21,5 +21,4 @@ public class UserData {
         this.userId = user.userName;
         this.cards = cards;
     }
-
 }

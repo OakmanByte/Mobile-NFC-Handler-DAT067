@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "140283011940",
+    "firebase_url": "https://test-tor.firebaseio.com",
+    "project_id": "test-tor",
+    "storage_bucket": "test-tor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140283011940:android:442f7a175f1ce41f6d9071",
+        "android_client_info": {
+          "package_name": "com.example.mobile_nfc_handler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140283011940-3s9g0cpa2u4nodi2h44ksgf3bm81l94v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaJIW6oE4_L6EqF0Oh-I7lDlnY4zfWX0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140283011940-3s9g0cpa2u4nodi2h44ksgf3bm81l94v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

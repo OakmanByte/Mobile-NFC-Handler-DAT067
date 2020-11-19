@@ -1,16 +1,18 @@
 package com.example.mobile_nfc_handler.ui.showCards;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
 
+
 public class ShowCardsActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButtonShowCards;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
         setUpButtons();
         setUpListeners();
     }
+
 
     @Override
     public void setUpButtons() {

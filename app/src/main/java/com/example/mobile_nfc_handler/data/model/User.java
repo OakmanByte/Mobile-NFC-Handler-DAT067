@@ -21,13 +21,13 @@ public class User {
     /**
      *
      * @param userName
-     * @param eMail
+     * @param email
      * @param password
      * @param admin
      */
-    public User (String userName, String eMail, String password, boolean admin){
+    public User (String userName, String email, String password, boolean admin){
         this.userName = userName;
-        this.email = eMail;
+        this.email = email;
         this.password = password;
         this.admin = admin;
     }

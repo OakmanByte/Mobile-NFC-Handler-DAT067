@@ -2,7 +2,6 @@ package com.example.mobile_nfc_handler.data;
 
 import androidx.annotation.NonNull;
 
-import com.example.mobile_nfc_handler.data.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

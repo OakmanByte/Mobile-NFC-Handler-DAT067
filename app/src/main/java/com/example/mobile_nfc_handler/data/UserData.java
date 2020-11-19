@@ -1,8 +1,8 @@
-package com.example.mobile_nfc_handler.data.model;
+package com.example.mobile_nfc_handler.data;
 
+import com.example.mobile_nfc_handler.data.User;
 import com.google.firebase.database.IgnoreExtraProperties;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 

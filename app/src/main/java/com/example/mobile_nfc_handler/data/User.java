@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.data.model;
+package com.example.mobile_nfc_handler.data;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

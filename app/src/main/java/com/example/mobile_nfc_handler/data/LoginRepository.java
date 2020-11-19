@@ -1,7 +1,5 @@
 package com.example.mobile_nfc_handler.data;
 
-import com.example.mobile_nfc_handler.data.model.User;
-
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.

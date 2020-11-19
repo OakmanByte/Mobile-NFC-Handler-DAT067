@@ -9,7 +9,7 @@ import android.util.Patterns;
 import com.example.mobile_nfc_handler.data.LoginRepository;
 import com.example.mobile_nfc_handler.data.Result;
 import com.example.mobile_nfc_handler.R;
-import com.example.mobile_nfc_handler.data.model.User;
+import com.example.mobile_nfc_handler.data.User;
 
 public class LoginViewModel extends ViewModel {
 

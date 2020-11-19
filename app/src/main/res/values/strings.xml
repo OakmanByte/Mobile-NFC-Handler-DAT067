@@ -24,4 +24,5 @@
     <string name="Logout" />
     <string name="login_text">Sign In</string>
     <string name="register_text">Register</string>
+    <string name="passwordRegister">Password</string>
 </resources>

@@ -31,4 +31,6 @@
     <string name="login_text">login_text</string>
     <string name="message_read_tag">message_read_tag</string>
     <string name="message_tap_tag">message_tap_tag</string>
+    <string name="message_tag_detected">NFC Tag Detected !</string>
+
 </resources>

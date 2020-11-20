@@ -17,6 +17,8 @@
         android:layout_marginTop="10dp"
         android:text="@string/returnButton"
         app:backgroundTint="@color/ButtonColour"
+        android:textColor="@color/ButtonTextColor"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

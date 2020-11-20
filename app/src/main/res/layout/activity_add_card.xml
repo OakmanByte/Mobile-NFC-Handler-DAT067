@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BackgroundColour"
+    android:background="@color/DeepGray"
     android:fontFamily="@font/roboto"
     tools:context=".ui.addCards.AddCardActivity">
 
@@ -15,8 +15,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
         android:text="@string/returnButton"
+        android:textColor="@color/ButtonTextColor"
         app:backgroundTint="@color/ButtonColour"
+        app:iconTint="@color/BackgroundColour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,14 +27,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <Button
         android:id="@+id/addCardInActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="380dp"
+        android:fontFamily="@font/roboto"
         android:text="@string/AddCardButton"
+        android:textColor="@color/ButtonTextColor"
         app:backgroundTint="@color/ButtonColour"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,12 +49,11 @@
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCardInActivityButton"
-        app:layout_constraintVertical_bias="0.485"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/nfc_logo" />
-
 
     <Button
         android:id="@+id/writeToTag"
@@ -61,10 +68,13 @@
         android:layout_marginEnd="128dp"
         android:layout_marginRight="128dp"
         android:layout_marginBottom="13dp"
-        android:text="@string/message_write_tag"
+        android:fontFamily="@font/roboto"
+        android:text="@string/Write_To_Tag"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColour"
         app:layout_constraintBottom_toTopOf="@+id/messageToWrite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -72,12 +82,12 @@
 
     <EditText
         android:id="@+id/messageToWrite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="361dp"
+        android:layout_height="48dp"
         android:layout_marginTop="13dp"
         android:layout_marginBottom="79dp"
         android:ems="10"
-        android:hint="@string/hint_message"
+        android:hint="@string/Hint_Message"
         app:layout_constraintBottom_toTopOf="@+id/addCardInActivityButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,12 +98,15 @@
         android:id="@+id/readTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:text="READ NFC TAG"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColour"
         app:layout_constraintBottom_toTopOf="@+id/messageToWrite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/writeToTag"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintVertical_bias="0.765" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

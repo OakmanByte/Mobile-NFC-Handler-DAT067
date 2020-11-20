@@ -27,10 +27,15 @@
     <string name="message_write_progress" />
     <string name="message_write_success" />
     <string name="message_write_error" />
-    <string name="register_text">register_text</string>
-    <string name="login_text">login_text</string>
+    <string name="Register">register_text</string>
+    <string name="Login">login_text</string>
     <string name="message_read_tag">message_read_tag</string>
     <string name="message_tap_tag">message_tap_tag</string>
     <string name="message_tag_detected">NFC Tag Detected !</string>
+    <string name="Login_text">Login</string>
+    <string name="register_text">Register</string>
+    <string name="WriteToTag">Write_To_Tag</string>
+    <string name="Hint_Message">Hint Message</string>
+    <string name="Write_To_Tag">Write To NFC Tag</string>
 
 </resources>

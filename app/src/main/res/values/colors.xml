@@ -8,5 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="BackgroundColour">#FF286EA5</color>
-    <color name="ButtonColour">#FF1429A1</color>
+    <color name="ButtonColour">#04030F</color>
+    <color name="HanBlue">#445bc1</color>
+    <color name="BlueGray">#6987d5</color>
+    <color name="Diamond">#bbdffa</color>
+    <color name="FuchsiaPurple">#c93a75</color>
+    <color name="VioletCrayola">#9a2c7e</color>
+    <color name="Midnight">#6c1e78</color>
+    <color name="DeepGray">#386fa4</color>
+    <color name="TopBar">#2A537A</color>
+    <color name="ButtonTextColor">#dfdfe5</color>
+
 </resources>

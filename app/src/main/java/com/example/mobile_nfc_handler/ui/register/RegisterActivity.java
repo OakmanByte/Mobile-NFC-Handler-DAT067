@@ -1,14 +1,11 @@
 package com.example.mobile_nfc_handler.ui.register;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
-
 import com.example.mobile_nfc_handler.R;
 
 public class RegisterActivity extends AppCompatActivity {
-
 
     private Button returnButton;
     private Button registerButton;
@@ -20,13 +17,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         this.setUpButtons();
         this.setUpListeners();
-
     }
 
     public void setUpButtons() {
         this.returnButton = findViewById(R.id.returnButtonRegister);
         this.registerButton =findViewById(R.id.registerNewUserButton);
-
     }
 
     public void setUpListeners() {
@@ -39,7 +34,5 @@ public class RegisterActivity extends AppCompatActivity {
         this.registerButton.setOnClickListener(e -> {
             //TODO
         });
-
     }
-
 }

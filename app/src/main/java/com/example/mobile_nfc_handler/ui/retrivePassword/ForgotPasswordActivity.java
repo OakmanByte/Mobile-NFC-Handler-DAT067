@@ -1,38 +1,34 @@
-package com.example.mobile_nfc_handler.ui.register;
+package com.example.mobile_nfc_handler.ui.retrivePassword;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.Button;
+
 import com.example.mobile_nfc_handler.R;
 
-public class RegisterActivity extends AppCompatActivity {
+public class ForgotPasswordActivity extends AppCompatActivity {
 
-    private Button returnButton;
-    private Button registerButton;
+    private Button RetrivePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_forgot_password);
 
         this.setUpButtons();
         this.setUpListeners();
     }
 
     public void setUpButtons() {
-        this.returnButton = findViewById(R.id.returnButtonRegister);
-        this.registerButton =findViewById(R.id.RetrivePassword);
+        this.RetrivePassword = findViewById(R.id.RetrivePassword);
     }
 
     public void setUpListeners() {
         // Button listener
-        this.returnButton.setOnClickListener(e -> {
+        this.RetrivePassword.setOnClickListener(e -> {
             //Return to main activity
             finish();
-        });
-
-        this.registerButton.setOnClickListener(e -> {
-            //TODO
         });
     }
 }

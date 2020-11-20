@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
+import com.example.mobile_nfc_handler.ui.retrivePassword.ForgotPasswordActivity;
 import com.google.firebase.FirebaseApp;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
+        final Button forgotPasswordButton = findViewById(R.id.ForgotPasswordButton);
 
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
@@ -57,6 +59,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+
+        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+            }
+        });
+
 
     }
 }

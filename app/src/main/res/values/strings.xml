@@ -37,5 +37,8 @@
     <string name="WriteToTag">Write_To_Tag</string>
     <string name="Hint_Message">Hint Message</string>
     <string name="Write_To_Tag">Write To NFC Tag</string>
+    <string name="Forgotten_Password">Forgot Password?</string>
+    <string name="Forgot_Password">Forgot Password?</string>
+    <string name="Retrive_Password">Retrive Password</string>
 
 </resources>

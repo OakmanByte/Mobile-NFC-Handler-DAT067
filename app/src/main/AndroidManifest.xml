@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileNFCHandler">
-        <activity android:name=".ui.showCards.ShowCardsActivity"></activity>
+        <activity android:name=".ui.register.RegisterActivity"></activity>
+        <activity android:name=".ui.showCards.ShowCardsActivity" />
         <activity android:name=".ui.addCards.AddCardActivity" />
         <activity android:name=".ui.main_menu.MainMenuActivity" />
         <activity

@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.data;
+package com.example.mobile_nfc_handler.generic;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.

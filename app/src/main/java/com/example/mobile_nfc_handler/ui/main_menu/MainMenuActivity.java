@@ -9,7 +9,6 @@ import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.addCards.AddCardActivity;
-import com.example.mobile_nfc_handler.ui.login.LoginActivity;
 import com.example.mobile_nfc_handler.ui.showCards.ShowCardsActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements UISetup {
@@ -32,7 +31,7 @@ public class MainMenuActivity extends AppCompatActivity implements UISetup {
     public void setUpButtons(){
         this.addCardButton = findViewById(R.id.addCardButton);
         this.showCardButton = findViewById(R.id.showCardButton);
-        this.returnButton = findViewById(R.id.returnButton);
+        this.returnButton = findViewById(R.id.returnButtonMainMenu);
     }
 
 

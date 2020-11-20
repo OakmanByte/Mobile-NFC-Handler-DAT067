@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.data.model;
+package com.example.mobile_nfc_handler.data;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -17,19 +17,17 @@ public class User {
     public User (){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
-
     /**
      *
      * @param userName
-     * @param eMail
+     * @param email
      * @param password
      * @param admin
      */
-    public User (String userName, String eMail, String password, boolean admin){
+    public User (String userName, String email, String password, boolean admin){
         this.userName = userName;
-        this.email = eMail;
+        this.email = email;
         this.password = password;
         this.admin = admin;
     }
-
 }

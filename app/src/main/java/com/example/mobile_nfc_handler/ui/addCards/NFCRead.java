@@ -41,7 +41,7 @@ public class NFCRead extends DialogFragment{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mListener = (AddCardActivity)context;
+        mListener = (NFCListener) context;
         mListener.onDialogDisplayed();
     }
 

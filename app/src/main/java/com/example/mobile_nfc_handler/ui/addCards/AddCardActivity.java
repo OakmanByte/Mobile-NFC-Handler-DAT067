@@ -7,7 +7,8 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.example.mobile_nfc_handler.R;
-import com.example.mobile_nfc_handler.data.model.User;
+import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseException;

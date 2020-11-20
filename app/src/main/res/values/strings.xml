@@ -22,4 +22,13 @@
     <string name="ShowCardButton">Show Card</string>
     <string name="AddCardButton">Add Card</string>
     <string name="Logout" />
+    <string name="message_write_tag">message_write_tag</string>
+    <string name="hint_message">hint_message</string>
+    <string name="message_write_progress" />
+    <string name="message_write_success" />
+    <string name="message_write_error" />
+    <string name="register_text">register_text</string>
+    <string name="login_text">login_text</string>
+    <string name="message_read_tag">message_read_tag</string>
+    <string name="message_tap_tag">message_tap_tag</string>
 </resources>

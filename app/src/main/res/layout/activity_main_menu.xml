@@ -32,12 +32,13 @@
         android:id="@+id/addCardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="448dp"
+        android:fontFamily="@font/roboto"
         android:text="@string/AddCardButton"
         android:textColor="@color/ButtonTextColor"
         app:backgroundTint="@color/ButtonColour"
-        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,14 +46,32 @@
         android:id="@+id/showCardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="@string/ShowCardButton"
-        app:backgroundTint="@color/ButtonColour"
-        android:textColor="@color/ButtonTextColor"
         android:fontFamily="@font/roboto"
+        android:text="@string/ShowCardButton"
+        android:textColor="@color/ButtonTextColor"
+        app:backgroundTint="@color/ButtonColour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCardButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.112" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="408dp"
+        android:layout_height="581dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/addCardButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309"
+        app:srcCompat="@drawable/logotransparent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

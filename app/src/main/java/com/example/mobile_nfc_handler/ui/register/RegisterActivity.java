@@ -21,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void setUpButtons() {
         this.returnButton = findViewById(R.id.returnButtonRegister);
-        this.registerButton =findViewById(R.id.RetrivePassword);
+        this.registerButton =findViewById(R.id.RegisterButton);
     }
 
     public void setUpListeners() {

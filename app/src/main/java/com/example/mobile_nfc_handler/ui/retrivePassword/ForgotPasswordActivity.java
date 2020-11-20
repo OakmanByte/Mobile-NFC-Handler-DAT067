@@ -10,6 +10,7 @@ import com.example.mobile_nfc_handler.R;
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private Button RetrivePassword;
+    private Button ReturnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     public void setUpButtons() {
+
         this.RetrivePassword = findViewById(R.id.RetrivePassword);
+        this.ReturnButton = findViewById(R.id.returnButtonForgotPassword);
     }
 
     public void setUpListeners() {
         // Button listener
         this.RetrivePassword.setOnClickListener(e -> {
+            //Return to main activity
+            finish();
+        });
+
+        this.ReturnButton.setOnClickListener(e -> {
             //Return to main activity
             finish();
         });

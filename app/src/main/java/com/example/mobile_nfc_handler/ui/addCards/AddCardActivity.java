@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+
 public class AddCardActivity extends AppCompatActivity implements UISetup {
 
     private Button addCardReturnButton;

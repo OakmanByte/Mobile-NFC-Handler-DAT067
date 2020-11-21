@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     @Override
     public void setUpListeners() {
         //Login
+        //test
         loginButton.setOnClickListener(v -> {
             LoginAuthentication loginAuth = new LoginAuthentication();
             try {

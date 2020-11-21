@@ -6,7 +6,7 @@ public interface UISetup {
 
    //  Button setUpButtons(Button button, int layoutid)
 
-    void setUpButtons();
+    void setUpComponents();
 
     void setUpListeners();
 

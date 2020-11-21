@@ -40,5 +40,6 @@
     <string name="Forgotten_Password">Forgot Password?</string>
     <string name="Forgot_Password">Forgot Password?</string>
     <string name="Retrive_Password">Retrive Password</string>
+    <string name="Test_button">Test</string>
 
 </resources>

@@ -29,11 +29,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
        // this.getAllButtons();
        // ActivitySetup.setUpButtons(RetrivePassword,R.id.RetrivePassword );
-        this.setUpButtons();
+        this.setUpComponents();
         this.setUpListeners();
     }
 
-    public void setUpButtons() {
+    public void setUpComponents() {
 
         this.RetrivePassword = findViewById(R.id.RetrivePassword);
         this.ReturnButton = findViewById(R.id.returnButtonForgotPassword);

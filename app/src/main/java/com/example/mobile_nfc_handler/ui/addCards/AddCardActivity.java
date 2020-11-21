@@ -56,7 +56,7 @@ public class AddCardActivity extends AppCompatActivity implements UISetup,NFCLis
         setContentView(R.layout.activity_add_card);
 
         this.mDatabase = FirebaseDatabase.getInstance().getReference();
-        setUpButtons();
+        setUpComponents();
         setUpListeners();
 
         initViews();
@@ -64,7 +64,7 @@ public class AddCardActivity extends AppCompatActivity implements UISetup,NFCLis
     }
 
     @Override
-    public void setUpButtons() {
+    public void setUpComponents() {
         this.addCardInActivityButton = findViewById(R.id.addCardInActivityButton);
         this.addCardReturnButton = findViewById(R.id.addCardReturnButton);
     }

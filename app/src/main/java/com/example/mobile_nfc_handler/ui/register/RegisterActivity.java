@@ -15,11 +15,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        this.setUpButtons();
+        this.setUpComponents();
         this.setUpListeners();
     }
 
-    public void setUpButtons() {
+    public void setUpComponents() {
         this.returnButton = findViewById(R.id.returnButtonRegister);
         this.registerButton =findViewById(R.id.RegisterButton);
     }

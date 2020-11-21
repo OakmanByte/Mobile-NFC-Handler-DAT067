@@ -22,13 +22,13 @@ public class MainMenuActivity extends AppCompatActivity implements UISetup {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        this.setUpButtons();
+        this.setUpComponents();
         this.setUpListeners();
 
     }
 
     @Override
-    public void setUpButtons(){
+    public void setUpComponents(){
         this.addCardButton = findViewById(R.id.addCardButton);
         this.showCardButton = findViewById(R.id.showCardButton);
         this.returnButton = findViewById(R.id.returnButtonMainMenu);

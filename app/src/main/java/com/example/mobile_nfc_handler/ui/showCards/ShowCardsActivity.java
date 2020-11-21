@@ -1,20 +1,29 @@
 package com.example.mobile_nfc_handler.ui.showCards;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class ShowCardsActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButtonShowCards;
@@ -23,7 +32,14 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
     private List<String> cards;
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     private ArrayAdapter<String> adapter;
+
+   // ALL THIS CODE IS JUST FOR TESTING SHOULD MOST LIKELY BE REMOVED WHEN WE START WORKING ON REAL ADD CARD
+
     int i = 0;
+
+    // Save current LocalDateTime into a variable
+    LocalDate baseDate = LocalDate.of(2020,11,21);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +52,7 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
         cards = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cards );
         cardList.setAdapter(adapter);
+
     }
 
 
@@ -54,7 +71,13 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
         });
 
         this.testButton.setOnClickListener(e ->{
-              this.cards.add("Card" + i);
+
+            //Randomize a date
+            int randomAmountOfDays = (int) (4000*Math.random());
+            LocalDate randomdate = baseDate.plusDays(randomAmountOfDays);
+            String randomDate = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(randomdate);
+
+             this.cards.add(" Card name:\t" + i + "\n Added:\t" + randomDate);
               this.adapter.notifyDataSetChanged();
               i++;
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

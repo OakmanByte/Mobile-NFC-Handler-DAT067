@@ -46,11 +46,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         this.RetrivePassword.setOnClickListener(e -> {
             //Return to main activity
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
         this.ReturnButton.setOnClickListener(e -> {
             //Return to main activity
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
     }
 }

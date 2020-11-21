@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         this.returnButton.setOnClickListener(e -> {
             //Return to main activity
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
         this.registerButton.setOnClickListener(e -> {

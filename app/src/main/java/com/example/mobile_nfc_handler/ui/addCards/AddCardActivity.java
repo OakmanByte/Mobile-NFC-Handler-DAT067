@@ -73,6 +73,7 @@ public class AddCardActivity extends AppCompatActivity implements UISetup,NFCLis
     public void setUpListeners() {
         this.addCardReturnButton.setOnClickListener( e -> {
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
         this.addCardInActivityButton.setOnClickListener( e -> {

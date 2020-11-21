@@ -33,6 +33,7 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
     public void setUpListeners() {
         this.returnButtonShowCards.setOnClickListener(e ->{
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
     }
 }

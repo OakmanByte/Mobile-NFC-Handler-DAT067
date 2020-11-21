@@ -41,14 +41,17 @@ public class MainMenuActivity extends AppCompatActivity implements UISetup {
         returnButton.setOnClickListener( e -> {
             //Return to main activity
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
         showCardButton.setOnClickListener( e -> {
             //Go to the show cards activity
             startActivity(new Intent(MainMenuActivity.this, ShowCardsActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
         addCardButton.setOnClickListener( e -> {
             //Go to the add cards activity
             startActivity(new Intent(MainMenuActivity.this, AddCardActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 }

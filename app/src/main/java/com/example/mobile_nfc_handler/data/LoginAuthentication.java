@@ -2,7 +2,6 @@ package com.example.mobile_nfc_handler.data;
 
 import androidx.annotation.NonNull;
 
-import com.example.mobile_nfc_handler.generic.Result;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,14 +20,26 @@ public class LoginAuthentication {
     private String dbUsername;
     private String dbEmail;
 
-    public Result<User> login(String username, String password) {
+    public boolean login(String username, String password) throws IOException {
             this.reference = FirebaseDatabase.getInstance().getReference().child("users").child(username);
+
+            dbPassword = this.reference.child("password").toString();
+            dbEmail = this.reference.child("email").toString();
+
+            System.out.println("password server: " + dbPassword);
+            System.out.println("email server: " + dbEmail);
+            System.out.println("password input: " + password);
+            /*
             this.reference.addValueEventListener( new ValueEventListener(){
 
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     dbPassword = snapshot.child("password").getValue().toString();
                     dbEmail = snapshot.child("email").getValue().toString();
+
+                    System.out.println("password server: " + dbPassword);
+                    System.out.println("email server: " + dbEmail);
+                    System.out.println("password input: " + password);
                 }
 
                 @Override
@@ -37,19 +48,18 @@ public class LoginAuthentication {
                 }
             });
 
-        try {
-            // Kolla om rätt lösenord
-            if ( dbPassword.equals(password)) {
-                User user =  new User(username, dbEmail, password, false);
+             */
+       try {
+           return validatePassword(password, dbPassword);
+       }catch(NullPointerException n ){
+           System.out.println("Login error");
+       }
+       return false;
 
-                return new Result.Success<>(user);
-            }
+    }
 
-        } catch (Exception e) {
-            return new Result.Error(new IOException("Error logging in", e));
-        }
-        return null;
-
+    private boolean validatePassword(String inputPassword, String passwordDb){
+        return inputPassword.compareTo(passwordDb) == 0;
     }
 
     public void logout() {

@@ -1,7 +1,5 @@
 package com.example.mobile_nfc_handler.data;
 
-import com.example.mobile_nfc_handler.generic.Result;
-
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
@@ -43,6 +41,7 @@ public class LocalUserData {
         // @see https://developer.android.com/training/articles/keystore
     }
 
+    /*
     public Result<User> login(String username, String password) {
         // handle login
         Result<User> result = dataSource.login(username, password);
@@ -51,4 +50,6 @@ public class LocalUserData {
         }
         return result;
     }
+
+     */
 }

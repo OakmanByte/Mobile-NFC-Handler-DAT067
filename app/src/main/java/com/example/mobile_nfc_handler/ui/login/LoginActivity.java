@@ -1,76 +1,92 @@
 package com.example.mobile_nfc_handler.ui.login;
 
-import android.app.Activity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
+
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.data.LoginAuthentication;
+import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
 import com.example.mobile_nfc_handler.ui.retrivePassword.ForgotPasswordActivity;
 import com.google.firebase.FirebaseApp;
 
-public class LoginActivity extends AppCompatActivity {
+import java.io.IOException;
 
-    private LoginViewModel loginViewModel;
+public class LoginActivity extends AppCompatActivity implements UISetup {
+
+    private TextView username;
+    private TextView password;
+
+    private Button loginButton;
+    private Button registerButton;
+    private Button forgotPasswordButton;
+
+    private boolean loginResult = false;
+
+    public static User loggedInUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
-
         setContentView(R.layout.activity_login);
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
+        this.setUpComponents();
+        this.setUpListeners();
+    }
 
-        final Button loginButton = findViewById(R.id.login);
-        final Button registerButton = findViewById(R.id.register);
-        final Button forgotPasswordButton = findViewById(R.id.ForgotPasswordButton);
 
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                setResult(Activity.RESULT_OK);
-                //Complete and destroy login activity once successful
-                finish();
+    @Override
+    public void setUpComponents() {
+        // Id's for Buttons
+        loginButton = findViewById(R.id.login);
+        registerButton = findViewById(R.id.register);
+        forgotPasswordButton = findViewById(R.id.ForgotPasswordButton);
+
+        //id's for TextFields
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+
+    }
+
+    @Override
+    public void setUpListeners() {
+        //Login
+        loginButton.setOnClickListener(v -> {
+            LoginAuthentication loginAuth = new LoginAuthentication();
+            try {
+                loginResult = loginAuth.login(this.username.getText().toString(), this.password.getText().toString());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+            loginResult = true;
+            if ( loginResult){
                 startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                loggedInUser = new User("Anton", "Anton@swagmail.com", "abc123", false);
             }
+
+
+
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        //Register
+        registerButton.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+        //Forgot password
+        forgotPasswordButton.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
-
-
     }
 }

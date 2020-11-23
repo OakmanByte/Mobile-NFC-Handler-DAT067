@@ -1,5 +1,5 @@
 # Mobile NFC Handler DAT067
-Detta är repot för gruppen som ska arbeta med Mobile RFID Handler inom kursen Projekt(DAT067)
+Detta är repot för gruppen som arbetar med Mobile RFID Handler inom kursen Projekt(DAT067)
 
 ## Gruppmedlemmar
 - Anton Ekman (OakmanByte)

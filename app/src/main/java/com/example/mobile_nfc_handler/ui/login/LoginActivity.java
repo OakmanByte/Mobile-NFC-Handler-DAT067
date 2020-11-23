@@ -16,6 +16,8 @@ import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
 import com.example.mobile_nfc_handler.ui.retrivePassword.ForgotPasswordActivity;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 
@@ -32,8 +34,12 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
 
     public static User loggedInUser;
 
+    private FirebaseAuth mAuth;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        FirebaseUser testUser = mAuth.getCurrentUser();
+
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_login);

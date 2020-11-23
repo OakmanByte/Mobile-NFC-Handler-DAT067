@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
-import com.example.mobile_nfc_handler.data.LoginAuthentication;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
@@ -19,7 +19,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.IOException;
 /**
  *  Activity Class for logging in as an User.
  */
@@ -40,12 +39,10 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
-
-        FirebaseUser testUser = mAuth.getCurrentUser();
-
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
+
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
         this.setUpComponents();
         this.setUpListeners();
@@ -70,22 +67,20 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
         //Login
         //test2
         loginButton.setOnClickListener(v -> {
-            LoginAuthentication loginAuth = new LoginAuthentication();
-            try {
-                loginResult = loginAuth.login(this.username.getText().toString(), this.password.getText().toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            this.mAuth.signInWithEmailAndPassword(this.username.getText().toString(), this.password.getText().toString()).addOnCompleteListener( task -> {
+                // If credentials are correct
+               if(task.isSuccessful()){
+                   System.out.println("Succesful login");
+                   FirebaseUser user = mAuth.getCurrentUser();
 
-            loginResult = true;
-            if ( loginResult){
-                startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                loggedInUser = new User("Anton", "Anton@swagmail.com", "abc123", false);
-            }
-
-
-
+                   // Go to the next view :D
+                   startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
+                   overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+               }
+               else{
+                   Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
+               }
+            });
         });
 
         //Register

@@ -70,12 +70,18 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
             this.mAuth.signInWithEmailAndPassword(this.username.getText().toString(), this.password.getText().toString()).addOnCompleteListener( task -> {
                 // If credentials are correct
                if(task.isSuccessful()){
-                   System.out.println("Succesful login");
                    FirebaseUser user = mAuth.getCurrentUser();
 
-                   // Go to the next view :D
-                   startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
-                   overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                   if(user.isEmailVerified()){
+                       // Go to the next view :D
+                       System.out.println("Succesful login");
+                       startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
+                       overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                   }
+                   else {
+                       this.mAuth.signOut();
+                       Toast.makeText(LoginActivity.this, "Email is not verified", Toast.LENGTH_SHORT).show();
+                   }
                }
                else{
                    Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();

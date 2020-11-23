@@ -20,7 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
-
+/**
+ *  Activity Class for logging in as an User.
+ */
 public class LoginActivity extends AppCompatActivity implements UISetup {
 
     private TextView username;

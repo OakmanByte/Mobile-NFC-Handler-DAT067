@@ -27,7 +27,9 @@ import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
+/**
+ *  Activity Class where Users can add a new NFC card.
+ */
 public class AddCardActivity extends AppCompatActivity implements UISetup,NFCListener {
 
     private Button addCardReturnButton;

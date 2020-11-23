@@ -4,6 +4,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
 
+/**
+ * Generic User class for representing a registered User.
+ */
 @IgnoreExtraProperties
 public class User {
 

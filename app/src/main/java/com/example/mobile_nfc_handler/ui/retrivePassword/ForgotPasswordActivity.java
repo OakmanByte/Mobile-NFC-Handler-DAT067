@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
 
-
+/**
+ *  Activity Class for retriveing an Users password
+ */
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     //ActivitySetup setup = new ActivitySetup( this);

@@ -10,7 +10,9 @@ import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.addCards.AddCardActivity;
 import com.example.mobile_nfc_handler.ui.showCards.ShowCardsActivity;
-
+/**
+ *  Activity Class that is used as a main menu for users to easier navigate though the application
+ */
 public class MainMenuActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButton;

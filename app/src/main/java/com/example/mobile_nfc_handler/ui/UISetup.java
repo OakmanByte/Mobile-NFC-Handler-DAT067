@@ -1,10 +1,10 @@
 package com.example.mobile_nfc_handler.ui;
 
-import android.widget.Button;
+/**
+* Interface used for each activity to initilize all components and listeners for said components
+ **/
 
 public interface UISetup {
-
-   //  Button setUpButtons(Button button, int layoutid)
 
     void setUpComponents();
 

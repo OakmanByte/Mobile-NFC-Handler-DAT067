@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ *  Activity Class for displaying an Users saved NFC cards.
+ */
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class ShowCardsActivity extends AppCompatActivity implements UISetup {

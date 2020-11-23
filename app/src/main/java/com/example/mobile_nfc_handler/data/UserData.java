@@ -6,6 +6,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a Users data that each User has.
+ */
 @IgnoreExtraProperties
 public class UserData {
 

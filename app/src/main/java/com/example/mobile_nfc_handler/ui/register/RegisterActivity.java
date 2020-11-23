@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
-
+/**
+ *  Activity Class for registering a new User.
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private Button returnButton;

@@ -1,16 +1,11 @@
 package com.example.mobile_nfc_handler.ui.retrivePassword;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.mobile_nfc_handler.ui.ActivitySetup;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
+import android.os.Bundle;
+import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -19,16 +14,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button ReturnButton;
 
 
-   // List<Button> allButtons = new ArrayList();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-       // this.getAllButtons();
-       // ActivitySetup.setUpButtons(RetrivePassword,R.id.RetrivePassword );
         this.setUpComponents();
         this.setUpListeners();
     }

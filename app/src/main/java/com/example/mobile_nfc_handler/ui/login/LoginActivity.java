@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+
         FirebaseUser testUser = mAuth.getCurrentUser();
 
         super.onCreate(savedInstanceState);

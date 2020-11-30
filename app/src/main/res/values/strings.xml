@@ -43,5 +43,9 @@
     <string name="Test_button">Test</string>
     <string name="Show_Active_Cards">Display Active Cards</string>
     <string name="Register_Text">Register</string>
+    <string name="stopbuttonbutton">StopButtonButton</string>
+    <string name="startbutton">StartButton</string>
+    <string name="stopbutton">Stop Button</string>
+    <string name="STARTBUTTON">Start Button</string>
 
 </resources>

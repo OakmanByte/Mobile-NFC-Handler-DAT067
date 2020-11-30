@@ -1,5 +1,6 @@
 package com.example.mobile_nfc_handler.ui.showCards;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.UserData;
 import com.example.mobile_nfc_handler.ui.UISetup;
+import com.example.mobile_nfc_handler.ui.addCards.NFCService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +42,9 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButtonShowCards;
     private Button testButton;
+    private Button startButton;
+    private Button stopButton;
+
     private ListView cardList;
     private List<String>cards;
     private UserData cardData;
@@ -103,6 +108,13 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
         this.returnButtonShowCards = findViewById(R.id.returnButtonShowCards);
         this.testButton = findViewById(R.id.Test);
         this.cardList = findViewById(R.id.CardList);
+
+        this.startButton = findViewById(R.id.startButton);
+        this.stopButton = findViewById(R.id.stopButton);
+
+        startButton.setOnClickListener(e -> startService(new Intent(this, NFCService.class)));
+        stopButton .setOnClickListener(e -> stopService(new Intent(this, NFCService.class)));
+
     }
 
     @Override

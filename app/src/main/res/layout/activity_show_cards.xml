@@ -28,15 +28,17 @@
 
     <ListView
         android:id="@+id/CardList"
-        android:layout_width="409dp"
-        android:layout_height="613dp"
+        android:layout_width="449dp"
+        android:layout_height="482dp"
         android:layout_marginTop="59dp"
-        android:visibility="visible"
         android:numColumns="2"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/returnButtonShowCards"
+        app:layout_constraintVertical_bias="1.0"
         tools:visibility="visible" />
 
     <Button
@@ -52,6 +54,26 @@
         android:text="@string/Show_Active_Cards"
         app:layout_constraintBottom_toTopOf="@+id/CardList"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/STARTBUTTON"
+        app:layout_constraintBottom_toTopOf="@+id/CardList"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/stopbutton"
+        app:layout_constraintBottom_toTopOf="@+id/CardList"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

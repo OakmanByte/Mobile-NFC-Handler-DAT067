@@ -8,8 +8,7 @@ import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.User;
-import com.example.mobile_nfc_handler.tools.DatabaseInformation;
-import com.example.mobile_nfc_handler.ui.login.LoginActivity;
+import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,6 +26,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase db;
+
+    private String emailInput;
+    private String passwordInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         this.usernameRegister = findViewById(R.id.usernameRegister);
         this.passwordRegister = findViewById(R.id.passwordRegister);
+
+        this.emailInput = this.usernameRegister.getText().toString();
+        this.passwordInput = this.passwordRegister.getText().toString();
+
     }
 
     public void setUpListeners() {
@@ -57,18 +63,15 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         this.registerButton.setOnClickListener(e -> {
-            // Try to register a user
-            String email = usernameRegister.getText().toString();
-            String password = passwordRegister.getText().toString();
 
             //Create new user
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            mAuth.createUserWithEmailAndPassword(this.emailInput, this.passwordInput).addOnCompleteListener(task -> {
                 // If successful set user to the created user
                 if(task.isSuccessful()){
                     System.out.println("Successful user creation");
                     FirebaseUser user = mAuth.getCurrentUser();
                     // Create User for database
-                    User newUser = new User(mAuth.getUid(),email, false);
+                    User newUser = new User(mAuth.getUid(),this.emailInput, false);
                     // Put the user class on the new users UID
                     db.getReference().child("users").child(user.getUid()).setValue(newUser);
 

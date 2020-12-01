@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.tools;
+package com.example.mobile_nfc_handler.database;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;

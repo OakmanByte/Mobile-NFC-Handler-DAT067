@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.data.UserData;
-import com.example.mobile_nfc_handler.tools.DatabaseHandling;
+import com.example.mobile_nfc_handler.database.DatabaseHandling;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,8 +36,6 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     private ArrayAdapter<String> adapter;
 
-    private User userInfo;
-
     private FirebaseAuth mAuth;
     private FirebaseUser loggedInUser;
     private String uid;
@@ -51,7 +49,6 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
         setUpDB();
         setUpComponents();
         setUpListeners();
-
 
         cards = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cards );

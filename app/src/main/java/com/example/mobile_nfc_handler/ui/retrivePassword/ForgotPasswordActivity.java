@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -15,10 +16,10 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class ForgotPasswordActivity extends AppCompatActivity {
 
-    //ActivitySetup setup = new ActivitySetup( this);
-    private Button RetrivePassword;
-    private Button ReturnButton;
+    private Button retrivePassword;
+    private Button returnButton;
     private TextView editTextTextEmailAddress;
+    private String emailInput;
 
     private FirebaseAuth mAuth;
 
@@ -27,7 +28,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        mAuth = FirebaseAuth.getInstance();
+
+        mAuth = DatabaseInformation.getmAuth();
 
         this.setUpComponents();
         this.setUpListeners();
@@ -35,17 +37,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     public void setUpComponents() {
 
-        this.RetrivePassword = findViewById(R.id.RetrivePassword);
-        this.ReturnButton = findViewById(R.id.returnButtonForgotPassword);
+        this.retrivePassword = findViewById(R.id.RetrivePassword);
+        this.returnButton = findViewById(R.id.returnButtonForgotPassword);
         this.editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
+        this.emailInput = this.editTextTextEmailAddress.getText().toString();
     }
 
 
 
     public void setUpListeners() {
         // Button listener
-        this.RetrivePassword.setOnClickListener(e -> {
-            mAuth.sendPasswordResetEmail(this.editTextTextEmailAddress.getText().toString()).addOnCompleteListener(task -> {
+        this.retrivePassword.setOnClickListener(e -> {
+            mAuth.sendPasswordResetEmail(this.emailInput).addOnCompleteListener(task -> {
                if(task.isSuccessful()){
                    Toast.makeText(ForgotPasswordActivity.this, "Instructions on how to reset your password has been sent to your email", Toast.LENGTH_SHORT).show();
                }
@@ -55,7 +58,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             });
         });
 
-        this.ReturnButton.setOnClickListener(e -> {
+        this.returnButton.setOnClickListener(e -> {
             //Return to main activity
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

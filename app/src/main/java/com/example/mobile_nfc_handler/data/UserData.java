@@ -24,7 +24,7 @@ public class UserData {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public UserData(User user, ArrayList cards ){
+    public UserData(User user, List<NFCData> cards ){
         this.currentUser = user;
         this.cards = cards;
     }

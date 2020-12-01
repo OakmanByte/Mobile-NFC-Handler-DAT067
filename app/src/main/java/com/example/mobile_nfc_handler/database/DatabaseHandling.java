@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.tools;
+package com.example.mobile_nfc_handler.database;
 
 import android.widget.ArrayAdapter;
 
@@ -7,12 +7,13 @@ import androidx.annotation.NonNull;
 import com.example.mobile_nfc_handler.data.NFCData;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.data.UserData;
-import com.example.mobile_nfc_handler.ui.login.LoginActivity;
+import com.example.mobile_nfc_handler.main.StartingScreenActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class DatabaseHandling<T> {
@@ -27,7 +28,8 @@ public class DatabaseHandling<T> {
 
                 // Loops through the users cards and prints them out in the UI
                 for (NFCData nfc : data.getCards()) {
-                    cards.add(" Card name:\t" + nfc.getName() + "\n Card ID:\t" + nfc.getNfcID());
+                    System.out.println(nfc);
+                    cards.add( "\n Card ID:\t" + nfc.getNfcID() + " Card name:\t" + nfc.getName() );
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -46,7 +48,7 @@ public class DatabaseHandling<T> {
         DatabaseInformation.getDb().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                LoginActivity.theUser = snapshot.getValue(User.class);
+                StartingScreenActivity.theUser = snapshot.getValue(User.class);
             }
 
             @Override
@@ -60,7 +62,7 @@ public class DatabaseHandling<T> {
         DatabaseInformation.getDb().getReference().child("userData").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                LoginActivity.theUsersData = snapshot.getValue(UserData.class);
+                StartingScreenActivity.theUsersData = snapshot.getValue(UserData.class);
             }
 
             @Override

@@ -10,10 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
-import com.example.mobile_nfc_handler.data.User;
-import com.example.mobile_nfc_handler.data.UserData;
-import com.example.mobile_nfc_handler.tools.DatabaseHandling;
-import com.example.mobile_nfc_handler.tools.DatabaseInformation;
+import com.example.mobile_nfc_handler.database.DatabaseHandling;
+import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
@@ -26,9 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
  *  Activity Class for logging in as an User.
  */
 public class LoginActivity extends AppCompatActivity implements UISetup {
-
-    public static User theUser;
-    public static UserData theUsersData;
 
     private TextView username;
     private TextView password;
@@ -47,9 +42,6 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
-
-        //Initialize the database information
-        new DatabaseInformation();
 
         mAuth = DatabaseInformation.getmAuth();
         setContentView(R.layout.activity_login);
@@ -80,9 +72,8 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
             this.mAuth.signInWithEmailAndPassword(usernameText, passwordText).addOnCompleteListener( task -> {
                 // If credentials are correct
                if(task.isSuccessful()){
-                   FirebaseUser user = mAuth.getCurrentUser();
 
-                   if(user.isEmailVerified()){
+                   if(mAuth.getCurrentUser().isEmailVerified()){
                        // Go to the next view :D
                        // Fetch the logged in users data from the database
                        DatabaseHandling.getUserFromDatabase(mAuth.getUid());

@@ -7,7 +7,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class NFCData {
 
     //Placeholder
-    private String name;
+    private String nfcName;
     private String nfcID;
 
     public NFCData(){
@@ -15,12 +15,12 @@ public class NFCData {
     }
 
     public NFCData(String name, String nfcID){
-        this.name = name;
+        this.nfcName = name;
         this.nfcID = nfcID;
     }
 
     public String getName(){
-        return this.name;
+        return this.nfcName;
     }
 
     public String getNfcID(){

@@ -16,8 +16,8 @@ import java.util.Map;
 public class UserData {
 
     // Det är public för att Firebase vill ha det så
-    public User owner;
-    //Ska vara en lista med NFCdata senare just nu Strings som placeholder:)
+    public User currentUser;
+
     public List<NFCData> cards;
 
     public UserData (){
@@ -25,19 +25,17 @@ public class UserData {
     }
 
     public UserData(User user, ArrayList cards ){
-        this.owner = user;
+        this.currentUser = user;
         this.cards = cards;
     }
-
+//Local change to cardlist
     public void addCardToUserData(NFCData nfcTag){
-        if (this.cards.contains(nfcTag)){
-            return;
-        }
-        else{
+        if (!this.cards.contains(nfcTag)){
             this.cards.add(nfcTag);
         }
     }
 
+    //Local changes to cardlist
     public void removeCardFromUserData(String nfcTag){
         this.cards.remove(nfcTag);
     }
@@ -46,7 +44,7 @@ public class UserData {
         return cards;
     }
 
-    public User getOwner(){
-        return owner;
+    public User getcurrentUser(){
+        return currentUser;
     }
 }

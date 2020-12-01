@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.tools.DatabaseInformation;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
@@ -42,7 +43,10 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        DatabaseInformation databaseInformation = new DatabaseInformation();
+
+
+        mAuth = DatabaseInformation.getmAuth();
         setContentView(R.layout.activity_login);
         this.setUpComponents();
         this.setUpListeners();

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.tools.DatabaseInformation;
 import com.example.mobile_nfc_handler.ui.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        db = FirebaseDatabase.getInstance();
-        mAuth = FirebaseAuth.getInstance();
+        db = DatabaseInformation.getDb();
+        mAuth = DatabaseInformation.getmAuth();
         setContentView(R.layout.activity_register);
 
         this.setUpComponents();
@@ -67,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                     System.out.println("Successful user creation");
                     FirebaseUser user = mAuth.getCurrentUser();
                     // Create User for database
-                    User newUser = new User(email, false);
+                    User newUser = new User(mAuth.getUid(),email, false);
                     // Put the user class on the new users UID
                     db.getReference().child("users").child(user.getUid()).setValue(newUser);
 

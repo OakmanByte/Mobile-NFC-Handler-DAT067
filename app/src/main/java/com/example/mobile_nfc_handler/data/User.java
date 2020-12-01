@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class User {
 
     // Det är public för att Firebase vill ha det så
+    public String userID;
     public String email;
     public boolean admin;
 
@@ -23,7 +24,8 @@ public class User {
      * @param email
      * @param admin
      */
-    public User (String email, boolean admin){
+    public User (String id, String email, boolean admin){
+        this.userID = id;
         this.email = email;
         this.admin = admin;
     }

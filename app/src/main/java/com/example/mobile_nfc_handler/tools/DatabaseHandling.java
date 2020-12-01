@@ -4,10 +4,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
-import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.NFCData;
+import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.data.UserData;
-import com.example.mobile_nfc_handler.ui.showNFC.ShowNFCActivity;
+import com.example.mobile_nfc_handler.ui.login.LoginActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -40,6 +40,34 @@ public class DatabaseHandling<T> {
 
     public static void writeNFCToDataBase(FirebaseDatabase db, String uid, String location, NFCData data){
         //TODO
+    }
+
+    public static void getUserFromDatabase(String uid){
+        DatabaseInformation.getDb().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                LoginActivity.theUser = snapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public static void getUserDataFromDatabase(String uid){
+        DatabaseInformation.getDb().getReference().child("userData").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                LoginActivity.theUsersData = snapshot.getValue(UserData.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }

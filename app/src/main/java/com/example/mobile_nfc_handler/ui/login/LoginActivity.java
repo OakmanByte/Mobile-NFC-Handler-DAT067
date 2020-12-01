@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.data.UserData;
+import com.example.mobile_nfc_handler.tools.DatabaseHandling;
 import com.example.mobile_nfc_handler.tools.DatabaseInformation;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
@@ -24,6 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
  *  Activity Class for logging in as an User.
  */
 public class LoginActivity extends AppCompatActivity implements UISetup {
+
+    public static User theUser;
+    public static UserData theUsersData;
 
     private TextView username;
     private TextView password;
@@ -43,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
 
-        DatabaseInformation databaseInformation = new DatabaseInformation();
-
+        //Initialize the database information
+        new DatabaseInformation();
 
         mAuth = DatabaseInformation.getmAuth();
         setContentView(R.layout.activity_login);
@@ -70,14 +75,20 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     public void setUpListeners() {
         //Login
         loginButton.setOnClickListener(v -> {
-            this.mAuth.signInWithEmailAndPassword(this.username.getText().toString(), this.password.getText().toString()).addOnCompleteListener( task -> {
+            String usernameText = this.username.getText().toString();
+            String passwordText = this.password.getText().toString();
+            this.mAuth.signInWithEmailAndPassword(usernameText, passwordText).addOnCompleteListener( task -> {
                 // If credentials are correct
                if(task.isSuccessful()){
                    FirebaseUser user = mAuth.getCurrentUser();
 
                    if(user.isEmailVerified()){
                        // Go to the next view :D
-                       System.out.println("Successful login");
+                       // Fetch the logged in users data from the database
+                       DatabaseHandling.getUserFromDatabase(mAuth.getUid());
+                       // Fetch the userData from the database
+                       DatabaseHandling.getUserDataFromDatabase(mAuth.getUid());
+                       // Go to the main menu
                        startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                    }

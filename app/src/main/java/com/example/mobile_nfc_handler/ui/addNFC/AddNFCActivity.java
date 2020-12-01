@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.ui.addCards;
+package com.example.mobile_nfc_handler.ui.addNFC;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,34 +10,26 @@ import android.widget.EditText;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
-import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.ui.UISetup;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+
 /**
  *  Activity Class where Users can add a new NFC card.
  */
-public class AddCardActivity extends AppCompatActivity implements UISetup,NFCListener {
+public class AddNFCActivity extends AppCompatActivity implements UISetup,NFCListener {
 
     private Button addCardReturnButton;
     private Button addCardInActivityButton;
 
     private DatabaseReference mDatabase;
 
-    public static final String TAG = AddCardActivity.class.getSimpleName();
+    public static final String TAG = AddNFCActivity.class.getSimpleName();
     private EditText mEtMessage;
     private Button mBtWrite;
     private Button mBtRead;
@@ -79,31 +71,21 @@ public class AddCardActivity extends AppCompatActivity implements UISetup,NFCLis
         });
 
         this.addCardInActivityButton.setOnClickListener( e -> {
-            this.writeNewUser("testUser", "HelloWorld", "helloworld@mailhello.com", "abc123", false);
+            //TODOt
         });
     }
 
     private void addNewCard(String userId, String cardId, String cardNFC){
         //Query query = this.mDatabase.child("userData").equalTo()
         // Test user for test :)
-        User user = new User("HelloWorld", "helloworld@mailhello.com", "abc123", false);
 
         //TODO
 
     }
 
     //Det här var bara för test. Det funkar :)
-    private void writeNewUser(String userId, String userName, String email, String password, boolean admin){
-        User user = new User(userName, email, password, admin);
-
-        this.mDatabase.child("users").child(userId).setValue(user)
-                .addOnSuccessListener( l -> {
-            Log.d("Firebase", "Added user successfully");
-        })
-                .addOnFailureListener( l -> {
-            Log.d("Firebase", "Failed to add user");
-        });
-
+    private void writeNewUser(String uid){
+        //todo
     }
 
 

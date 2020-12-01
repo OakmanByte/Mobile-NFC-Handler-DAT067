@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.ui.addCards;
+package com.example.mobile_nfc_handler.ui.addNFC;
 
 import android.app.DialogFragment;
 import android.content.Context;

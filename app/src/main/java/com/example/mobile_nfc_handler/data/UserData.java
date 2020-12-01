@@ -15,34 +15,37 @@ import java.util.Map;
 public class UserData {
 
     // Det är public för att Firebase vill ha det så
-    public String userId;
-    public Map<String,String> cards;
+    public User owner;
+    //Ska vara en lista med NFCdata senare just nu Strings som placeholder:)
+    public List<NFCData> cards;
 
     public UserData (){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public UserData(User user, HashMap cards ){
-        this.userId = user.userName;
+    public UserData(User user, ArrayList cards ){
+        this.owner = user;
         this.cards = cards;
     }
 
-    public void addCardToUserData(String cardName, String cardData){
-        if ( cards.containsKey(cardName)){
+    public void addCardToUserData(NFCData nfcTag){
+        if (this.cards.contains(nfcTag)){
             return;
         }
-        else {
-            cards.put(cardName, cardData);
+        else{
+            this.cards.add(nfcTag);
         }
     }
 
-    public void removeCardFromUserData(String cardName){
-        if ( cards.containsKey(cardName)){
-            cards.remove(cardName);
-        }
+    public void removeCardFromUserData(String nfcTag){
+        this.cards.remove(nfcTag);
     }
 
-    public Map<String, String> getCards(){
+    public List<NFCData> getCards(){
         return cards;
+    }
+
+    public User getOwner(){
+        return owner;
     }
 }

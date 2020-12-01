@@ -1,8 +1,7 @@
-package com.example.mobile_nfc_handler.ui.showCards;
+package com.example.mobile_nfc_handler.ui.showNFC;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.data.NFCData;
 import com.example.mobile_nfc_handler.data.UserData;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,22 +21,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 /**
  *  Activity Class for displaying an Users saved NFC cards.
  */
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class ShowCardsActivity extends AppCompatActivity implements UISetup {
+public class ShowNFCActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButtonShowCards;
     private Button testButton;
@@ -83,19 +77,20 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
 
         // Setup db data for cards of the user
         db = FirebaseDatabase.getInstance();
-        db.getReference().child("userData").child(uid).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        cardData = snapshot.getValue(UserData.class);
-                        System.out.println("Tried to update card data in view");
-                    }
+        //db.getReference().child("userData").child(uid).setValue(testData);
+        db.getReference().child("userData").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cardData = snapshot.getValue(UserData.class);
+                System.out.println("Tried to update card data in view");
+                System.out.println("the snapshot" + snapshot.toString());
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        //Ignore
-                    }
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Ignore
+            }
+        });
     }
 
     @Override
@@ -114,14 +109,9 @@ public class ShowCardsActivity extends AppCompatActivity implements UISetup {
 
         this.testButton.setOnClickListener(e ->{
 
-            //Randomize a date
-            /*
-            int randomAmountOfDays = (int) (4000*Math.random());
-            LocalDate randomdate = baseDate.plusDays(randomAmountOfDays);
-            String randomDate = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(randomdate);
-            */
-            for( String s : this.cardData.cards.keySet()) {
-                this.cards.add(" Card name:\t" + this.cardData.cards.get(s) + "\n Added:\t");
+            // Loops through the users cards and prints them out in the UI
+            for( NFCData data : this.cardData.getCards()) {
+                this.cards.add(" Card name:\t" + data.getName() + "\n Card ID:\t" + data.getNfcID());
                 this.adapter.notifyDataSetChanged();
             }
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

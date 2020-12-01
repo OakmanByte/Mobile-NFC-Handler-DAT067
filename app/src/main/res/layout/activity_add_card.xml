@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/DeepGray"
     android:fontFamily="@font/roboto"
-    tools:context=".ui.addCards.AddCardActivity">
+    tools:context=".ui.addNFC.AddNFCActivity">
 
     <Button
         android:id="@+id/addCardReturnButton"

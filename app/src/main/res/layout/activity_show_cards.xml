@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/BackgroundColour"
     android:fontFamily="@font/roboto"
-    tools:context=".ui.showCards.ShowCardsActivity">
+    tools:context=".ui.showNFC.ShowNFCActivity">
 
     <Button
         android:id="@+id/returnButtonShowCards"

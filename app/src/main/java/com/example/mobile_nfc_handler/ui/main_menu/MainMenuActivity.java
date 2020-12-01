@@ -8,8 +8,8 @@ import android.widget.Button;
 
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
-import com.example.mobile_nfc_handler.ui.addCards.AddCardActivity;
-import com.example.mobile_nfc_handler.ui.showCards.ShowCardsActivity;
+import com.example.mobile_nfc_handler.ui.addNFC.AddNFCActivity;
+import com.example.mobile_nfc_handler.ui.showNFC.ShowNFCActivity;
 /**
  *  Activity Class that is used as a main menu for users to easier navigate though the application
  */
@@ -47,12 +47,12 @@ public class MainMenuActivity extends AppCompatActivity implements UISetup {
         });
         showCardButton.setOnClickListener( e -> {
             //Go to the show cards activity
-            startActivity(new Intent(MainMenuActivity.this, ShowCardsActivity.class));
+            startActivity(new Intent(MainMenuActivity.this, ShowNFCActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
         addCardButton.setOnClickListener( e -> {
             //Go to the add cards activity
-            startActivity(new Intent(MainMenuActivity.this, AddCardActivity.class));
+            startActivity(new Intent(MainMenuActivity.this, AddNFCActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }

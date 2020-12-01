@@ -13,8 +13,8 @@
         android:theme="@style/Theme.MobileNFCHandler">
         <activity android:name=".ui.retrivePassword.ForgotPasswordActivity"></activity>
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.showCards.ShowCardsActivity" />
-        <activity android:name=".ui.addCards.AddCardActivity" />
+        <activity android:name=".ui.showNFC.ShowNFCActivity" />
+        <activity android:name=".ui.addNFC.AddNFCActivity" />
         <activity android:name=".ui.main_menu.MainMenuActivity" />
         <activity
             android:name=".ui.login.LoginActivity"

@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
 
     private boolean loginResult = false;
 
-    public static User loggedInUser;
+    private FirebaseUser loggedInUser;
 
     private FirebaseAuth mAuth;
 
@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     @Override
     public void setUpListeners() {
         //Login
-        //test2
         loginButton.setOnClickListener(v -> {
             this.mAuth.signInWithEmailAndPassword(this.username.getText().toString(), this.password.getText().toString()).addOnCompleteListener( task -> {
                 // If credentials are correct
@@ -74,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
 
                    if(user.isEmailVerified()){
                        // Go to the next view :D
-                       System.out.println("Succesful login");
+                       System.out.println("Successful login");
                        startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                    }

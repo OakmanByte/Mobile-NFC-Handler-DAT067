@@ -14,6 +14,7 @@ import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.data.NFCData;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.data.UserData;
+import com.example.mobile_nfc_handler.tools.DatabaseHandling;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,14 +49,6 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
     private String uid;
     private FirebaseDatabase db;
 
-   // ALL THIS CODE IS JUST FOR TESTING SHOULD MOST LIKELY BE REMOVED WHEN WE START WORKING ON REAL ADD CARD
-
-    int i = 0;
-
-    // Save current LocalDateTime into a variable
-    LocalDate baseDate = LocalDate.of(2020,11,21);
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +57,7 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
         setUpDB();
         setUpComponents();
         setUpListeners();
+
 
         cards = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cards );
@@ -74,26 +68,27 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
     private void setUpDB(){
         //Setup logged in user
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser loggedInUser = mAuth.getCurrentUser();
+        loggedInUser = mAuth.getCurrentUser();
+        System.out.println("Logged in user: " + loggedInUser);
         uid = loggedInUser.getUid();
         // Get our instance of the database
         this.db = FirebaseDatabase.getInstance();
     }
 
+    /*
     private void dbListeners(){
         this.db.getReference().child("userData").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ShowNFCActivity.this.cardData = snapshot.getValue(UserData.class);
                 System.out.println("Tried to update card data in view");
-                System.out.println("the snapshot" + snapshot.toString());
+                System.out.println("the snapshot: " + snapshot.toString());
 
                 // Loops through the users cards and prints them out in the UI
                 for( NFCData data : ShowNFCActivity.this.cardData.getCards()) {
                     ShowNFCActivity.this.cards.add(" Card name:\t" + data.getName() + "\n Card ID:\t" + data.getNfcID());
                     ShowNFCActivity.this.adapter.notifyDataSetChanged();
                 }
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
 
             @Override
@@ -102,6 +97,7 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
             }
         });
     }
+     */
 
     @Override
     public void setUpComponents() {
@@ -118,7 +114,8 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
         });
 
         this.testButton.setOnClickListener(e ->{
-            dbListeners();
+            DatabaseHandling.readNFCDatabase(this.db, this.cards, this.adapter,this.uid);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
 
 

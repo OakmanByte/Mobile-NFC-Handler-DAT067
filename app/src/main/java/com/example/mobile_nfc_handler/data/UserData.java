@@ -1,6 +1,7 @@
 package com.example.mobile_nfc_handler.data;
 
 import com.example.mobile_nfc_handler.data.User;
+import com.example.mobile_nfc_handler.ui.showNFC.ShowNFCActivity;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.ArrayList;

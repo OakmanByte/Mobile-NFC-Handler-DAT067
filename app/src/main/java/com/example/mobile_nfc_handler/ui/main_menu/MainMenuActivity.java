@@ -26,7 +26,7 @@ public class MainMenuActivity extends AppCompatActivity implements UISetup {
 
         this.setUpComponents();
         this.setUpListeners();
-
+        System.out.println("I AM HERE IN MENU");
     }
 
     @Override

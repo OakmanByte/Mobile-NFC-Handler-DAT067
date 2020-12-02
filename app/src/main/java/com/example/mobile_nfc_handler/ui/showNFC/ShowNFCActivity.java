@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.data.NFCData;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.data.UserData;
@@ -49,6 +50,9 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
     private String uid;
     private FirebaseDatabase db;
 
+    String cardName;
+    String cardID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,13 +73,13 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cards );
         cardListView.setAdapter(adapter);
 
-        String cardName;
-        String cardID;
-        for (NFCData nfc : data.getCards()) {
-            cardName = nfc.getName();
-            cardID = nfc.getNfcID();
-            cards.add( " Card name: \t" + cardName + "\n Card ID:\t" + cardID  );
-            adapter.notifyDataSetChanged();
+        if(!(Utility.isDataNullorEmpty(data.getCards()))) {
+            for (NFCData nfc : data.getCards()) {
+                this.cardName = nfc.getName();
+                this.cardID = nfc.getNfcID();
+                cards.add(" Card name: \t" + cardName + "\n Card ID:\t" + cardID);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 

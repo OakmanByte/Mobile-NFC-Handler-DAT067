@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -48,14 +49,17 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     public void setUpListeners() {
         // Button listener
         this.retrivePassword.setOnClickListener(e -> {
-            mAuth.sendPasswordResetEmail(this.emailInput).addOnCompleteListener(task -> {
-               if(task.isSuccessful()){
-                   Toast.makeText(ForgotPasswordActivity.this, "Instructions on how to reset your password has been sent to your email", Toast.LENGTH_SHORT).show();
-               }
-               else{
-                   Toast.makeText(ForgotPasswordActivity.this, "Failed to send instructions how to reset your password", Toast.LENGTH_SHORT).show();
-               }
-            });
+
+            if(!(Utility.isStringNullorEmpty(this.emailInput))) {
+
+                mAuth.sendPasswordResetEmail(this.emailInput).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(ForgotPasswordActivity.this, "Instructions on how to reset your password has been sent to your email", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ForgotPasswordActivity.this, "Failed to send instructions how to reset your password", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
         this.returnButton.setOnClickListener(e -> {

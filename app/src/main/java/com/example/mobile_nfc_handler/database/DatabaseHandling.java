@@ -15,6 +15,7 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandling<T> {
@@ -42,10 +43,19 @@ public class DatabaseHandling<T> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                StartingScreenActivity.theUsersData = snapshot.getValue(UserData.class);
+                if (snapshot.getValue(UserData.class) == null) {
 
-                for(NFCData data : StartingScreenActivity.theUsersData.getCards()){
-                    System.out.println("The card name: " + data.getName() + " The card's id: " + data.getNfcID());
+                    System.out.println("AM HERE BOU");
+                    //Creates a standard userData for new users such that userData isn't uninitilized or null/empty
+                    UserData currentUser = new UserData(StartingScreenActivity.theUser, new ArrayList<NFCData>());
+                    StartingScreenActivity.theUsersData = currentUser;
+
+                    DatabaseInformation.getDb().getReference().child("userData").child(uid).setValue(StartingScreenActivity.theUsersData);
+
+                }
+                else {
+
+                    StartingScreenActivity.theUsersData = snapshot.getValue(UserData.class);
                 }
             }
 

@@ -11,34 +11,13 @@ import com.example.mobile_nfc_handler.main.StartingScreenActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.SQLOutput;
 import java.util.List;
 
 public class DatabaseHandling<T> {
-
-    public static void readNFCDatabase(FirebaseDatabase db, List cards, ArrayAdapter adapter, String uid) {
-        db.getReference().child("userData").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserData data = snapshot.getValue(UserData.class);
-                System.out.println("Tried to update card data in view");
-                System.out.println("the snapshot: " + snapshot.toString());
-
-                // Loops through the users cards and prints them out in the UI
-                for (NFCData nfc : data.getCards()) {
-                    System.out.println(nfc);
-                    cards.add( "\n Card ID:\t" + nfc.getNfcID() + " Card name:\t" + nfc.getName() );
-                    adapter.notifyDataSetChanged();
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //Ignore
-            }
-        });
-    }
 
     public static void writeNFCToDataBase(FirebaseDatabase db, String uid, String location, NFCData data){
         //TODO
@@ -62,7 +41,12 @@ public class DatabaseHandling<T> {
         DatabaseInformation.getDb().getReference().child("userData").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 StartingScreenActivity.theUsersData = snapshot.getValue(UserData.class);
+
+                for(NFCData data : StartingScreenActivity.theUsersData.getCards()){
+                    System.out.println("The card name: " + data.getName() + " The card's id: " + data.getNfcID());
+                }
             }
 
             @Override

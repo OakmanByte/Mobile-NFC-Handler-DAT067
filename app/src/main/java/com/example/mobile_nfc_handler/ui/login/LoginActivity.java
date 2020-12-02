@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.database.DatabaseHandling;
 import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.example.mobile_nfc_handler.ui.UISetup;
@@ -33,6 +34,9 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     private Button forgotPasswordButton;
 
     private boolean loginResult = false;
+
+    String usernameText;
+    String passwordText;
 
     private FirebaseUser loggedInUser;
 
@@ -67,31 +71,36 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
     public void setUpListeners() {
         //Login
         loginButton.setOnClickListener(v -> {
-            String usernameText = this.username.getText().toString();
-            String passwordText = this.password.getText().toString();
-            this.mAuth.signInWithEmailAndPassword(usernameText, passwordText).addOnCompleteListener( task -> {
-                // If credentials are correct
-               if(task.isSuccessful()){
+            this.usernameText = this.username.getText().toString();
+            this.passwordText = this.password.getText().toString();
 
-                   if(mAuth.getCurrentUser().isEmailVerified()){
-                       // Go to the next view :D
-                       // Fetch the logged in users data from the database
-                       DatabaseHandling.getUserFromDatabase(mAuth.getUid());
-                       // Fetch the userData from the database
-                       DatabaseHandling.getUserDataFromDatabase(mAuth.getUid());
-                       // Go to the main menu
-                       startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
-                       overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                   }
-                   else {
-                       this.mAuth.signOut();
-                       Toast.makeText(LoginActivity.this, "Email is not verified", Toast.LENGTH_SHORT).show();
-                   }
-               }
-               else{
-                   Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
-               }
-            });
+            System.out.println(this.usernameText + this.passwordText  );
+
+            if(!(Utility.isStringNullorEmpty(this.usernameText)) && !(Utility.isStringNullorEmpty(this.passwordText))) {
+
+                this.mAuth.signInWithEmailAndPassword(this.usernameText, this.passwordText).addOnCompleteListener(task -> {
+                    // If credentials are correct
+                    if (task.isSuccessful()) {
+
+                        if (mAuth.getCurrentUser().isEmailVerified()) {
+                            System.out.println("AM HERE");
+                            // Go to the next view :D
+                            // Fetch the logged in users data from the database
+                            DatabaseHandling.getUserFromDatabase(mAuth.getUid());
+                            // Fetch the userData from the database
+                            DatabaseHandling.getUserDataFromDatabase(mAuth.getUid());
+                            // Go to the main menu
+                            startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        } else {
+                            this.mAuth.signOut();
+                            Toast.makeText(LoginActivity.this, "Email is not verified", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
         //Register

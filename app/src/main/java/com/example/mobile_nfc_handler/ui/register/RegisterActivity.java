@@ -7,11 +7,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mobile_nfc_handler.R;
+import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.data.User;
 import com.example.mobile_nfc_handler.database.DatabaseInformation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+
+//import static com.example.mobile_nfc_handler.Utility.isStringNullorEmpty;
 
 /**
  *  Activity Class for registering a new User.
@@ -49,9 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
         this.usernameRegister = findViewById(R.id.usernameRegister);
         this.passwordRegister = findViewById(R.id.passwordRegister);
 
-        this.emailInput = this.usernameRegister.getText().toString();
-        this.passwordInput = this.passwordRegister.getText().toString();
-
     }
 
     public void setUpListeners() {
@@ -64,24 +64,29 @@ public class RegisterActivity extends AppCompatActivity {
 
         this.registerButton.setOnClickListener(e -> {
 
-            //Create new user
-            mAuth.createUserWithEmailAndPassword(this.emailInput, this.passwordInput).addOnCompleteListener(task -> {
-                // If successful set user to the created user
-                if(task.isSuccessful()){
-                    System.out.println("Successful user creation");
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    // Create User for database
-                    User newUser = new User(mAuth.getUid(),this.emailInput, false);
-                    // Put the user class on the new users UID
-                    db.getReference().child("users").child(user.getUid()).setValue(newUser);
+            this.emailInput = this.usernameRegister.getText().toString();
+            this.passwordInput = this.passwordRegister.getText().toString();
 
-                    user.sendEmailVerification();
-                }
-                else{
-                    System.out.println("Failed to create user");
-                    Toast.makeText(RegisterActivity.this, "Failed to create user",Toast.LENGTH_SHORT).show();
-                }
-            });
+            if(!(Utility.isStringNullorEmpty(this.emailInput)) && !(Utility.isStringNullorEmpty(this.passwordInput))) {
+
+                //Create new user
+                mAuth.createUserWithEmailAndPassword(this.emailInput, this.passwordInput).addOnCompleteListener(task -> {
+                    // If successful set user to the created user
+                    if (task.isSuccessful()) {
+                        System.out.println("Successful user creation");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        // Create User for database
+                        User newUser = new User(mAuth.getUid(), this.emailInput, false);
+                        // Put the user class on the new users UID
+                        db.getReference().child("users").child(user.getUid()).setValue(newUser);
+
+                        user.sendEmailVerification();
+                    } else {
+                        System.out.println("Failed to create user");
+                        Toast.makeText(RegisterActivity.this, "Failed to create user", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
-    }
+        }
 }

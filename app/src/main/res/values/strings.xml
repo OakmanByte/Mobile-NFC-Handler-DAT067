@@ -43,5 +43,6 @@
     <string name="Test_button">Test</string>
     <string name="Show_Active_Cards">Display Active Cards</string>
     <string name="Register_Text">Register</string>
+    <string name="servicedesc">hej</string>
 
 </resources>

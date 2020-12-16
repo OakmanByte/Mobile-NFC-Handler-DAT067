@@ -2,5 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Logout" />
+    <item
+        android:id="@+id/SettingsMenuItem"
+        android:title="Settings" />
+    <item
+        android:id="@+id/logoutMenuItem"
+        android:title="Logout" />
 </menu>

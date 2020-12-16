@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.data.NFCData;
@@ -35,9 +36,8 @@ import java.util.List;
  */
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class ShowNFCActivity extends AppCompatActivity implements UISetup {
+public class ShowNFCActivity extends BaseActivity implements UISetup {
 
-    private Button returnButtonShowCards;
     private ListView cardListView;
     private List<String>cards;
     private UserData cardData;
@@ -94,16 +94,11 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
 
     @Override
     public void setUpComponents() {
-        this.returnButtonShowCards = findViewById(R.id.returnButtonShowCards);
         this.cardListView = findViewById(R.id.CardList);
     }
 
     @Override
     public void setUpListeners() {
-        this.returnButtonShowCards.setOnClickListener(e ->{
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        });
 
         this.cardListView.setOnItemClickListener( (parent, view, position, id) ->{
             // Prints the card at the position in the list

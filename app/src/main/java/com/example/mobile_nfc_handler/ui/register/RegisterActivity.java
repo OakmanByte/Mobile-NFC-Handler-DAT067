@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.data.User;
@@ -19,9 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 /**
  *  Activity Class for registering a new User.
  */
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
 
-    private Button returnButton;
     private Button registerButton;
 
     private TextView usernameRegister;
@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void setUpComponents() {
-        this.returnButton = findViewById(R.id.returnButtonRegister);
         this.registerButton = findViewById(R.id.RegisterButton);
 
         this.usernameRegister = findViewById(R.id.usernameRegister);
@@ -56,11 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void setUpListeners() {
         // Button listener
-        this.returnButton.setOnClickListener(e -> {
-            //Return to main activity
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        });
 
         this.registerButton.setOnClickListener(e -> {
 

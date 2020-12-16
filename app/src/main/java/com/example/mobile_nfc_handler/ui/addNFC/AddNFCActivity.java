@@ -14,6 +14,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.widget.Toast;
 
+import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 /**
  *  Activity Class where Users can add a new NFC card.
  */
-public class AddNFCActivity extends AppCompatActivity implements UISetup,NFCListener {
+public class AddNFCActivity extends BaseActivity implements UISetup,NFCListener {
 
     private Button addCardReturnButton;
     private Button addCardInActivityButton;

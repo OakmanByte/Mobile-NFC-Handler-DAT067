@@ -3,9 +3,6 @@ package com.example.mobile_nfc_handler.ui.login;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Menu;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +11,7 @@ import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.Utility;
 import com.example.mobile_nfc_handler.database.DatabaseHandling;
 import com.example.mobile_nfc_handler.database.DatabaseInformation;
+import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.ui.UISetup;
 import com.example.mobile_nfc_handler.ui.main_menu.MainMenuActivity;
 import com.example.mobile_nfc_handler.ui.register.RegisterActivity;
@@ -25,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 /**
  *  Activity Class for logging in as an User.
  */
-public class LoginActivity extends AppCompatActivity implements UISetup {
+public class LoginActivity extends BaseActivity implements UISetup {
 
     private TextView username;
     private TextView password;
@@ -53,14 +51,26 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
         this.setUpComponents();
         this.setUpListeners();
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_items, menu);
         return true;
     }
+*/
+/*
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
 
+        if(id == R.id.logoutMenuItem){
 
+           //
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+*/
     @Override
     public void setUpComponents() {
         // Id's for Buttons
@@ -97,7 +107,7 @@ public class LoginActivity extends AppCompatActivity implements UISetup {
                             // Fetch the userData from the database
                             DatabaseHandling.getUserDataFromDatabase(mAuth.getUid());
                             // Go to the main menu
-                            startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MainMenuActivity.class).putExtra("from", this.getClass().getSimpleName()));;
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         } else {
                             this.mAuth.signOut();

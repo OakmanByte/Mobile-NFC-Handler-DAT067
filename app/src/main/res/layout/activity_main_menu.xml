@@ -61,8 +61,8 @@
         android:id="@+id/imageView4"
         android:layout_width="408dp"
         android:layout_height="581dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:layout_marginBottom="22dp"
@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309"
+        app:layout_constraintVertical_bias="0.316"
         app:srcCompat="@drawable/logotransparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

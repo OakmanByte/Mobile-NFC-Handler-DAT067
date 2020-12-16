@@ -38,7 +38,6 @@ import java.util.List;
 public class ShowNFCActivity extends AppCompatActivity implements UISetup {
 
     private Button returnButtonShowCards;
-    private Button testButton;
     private ListView cardListView;
     private List<String>cards;
     private UserData cardData;
@@ -96,7 +95,6 @@ public class ShowNFCActivity extends AppCompatActivity implements UISetup {
     @Override
     public void setUpComponents() {
         this.returnButtonShowCards = findViewById(R.id.returnButtonShowCards);
-        this.testButton = findViewById(R.id.Test);
         this.cardListView = findViewById(R.id.CardList);
     }
 

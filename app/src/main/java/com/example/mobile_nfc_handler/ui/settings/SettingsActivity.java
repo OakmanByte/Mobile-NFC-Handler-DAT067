@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.R;
@@ -16,7 +14,7 @@ import com.example.mobile_nfc_handler.R;
 public class SettingsActivity extends BaseActivity {
 
     private Switch darkModeSwitch;
-    private boolean isDarkModeOn;
+
 
 
     @Override
@@ -24,29 +22,29 @@ public class SettingsActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
-
-
         darkModeSwitch = findViewById(R.id.darkModeSwitch);
 
-       // SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
-        //final SharedPreferences.Editor editor;
-        //editor = sharedPreferences.edit();
-       // isDarkModeOn  = sharedPreferences.getBoolean("isDarkModeOn", false);
-        isDarkModeOn = false;
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor;
+        editor = sharedPreferences.edit();
+        final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false);
 
-/*
-        if (isDarkModeOn) {
 
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        System.out.println("is dark mode on? " + isDarkModeOn);
+
+        darkModeSwitch.setChecked(isDarkModeOn);
+
+
+        /*
+        if (isDarkModeOn) { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             darkModeSwitch.setText("Disable Dark Mode");
         }
-
         else {
-
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             darkModeSwitch.setText("Enable Dark Mode");
         }
-        */
+
+         */
 
         darkModeSwitch.setOnCheckedChangeListener((view,b) -> {
 
@@ -54,22 +52,19 @@ public class SettingsActivity extends BaseActivity {
             System.out.println(b);
 
             if (b) {
-
-              //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                setTheme(R.style.Theme_AppCompat_DayNight);
-
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         darkModeSwitch.setText("Disable Dark Mode");
                     }
 
             else {
+                System.out.println("försöker sätta på lightmode :D");
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    darkModeSwitch.setText("Enable Dark Mode");
+                }
 
-                //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                setTheme(R.style.Theme_AppCompat_Light);
-
-                        darkModeSwitch.setText("Enable Dark Mode");
-                    }
-
-            isDarkModeOn = b;
+            editor.putBoolean("isDarkModeOn", b);
+            editor.apply();
+            finish();
         });
     }
 }

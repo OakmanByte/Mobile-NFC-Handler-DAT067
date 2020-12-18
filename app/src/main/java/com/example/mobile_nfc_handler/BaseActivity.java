@@ -2,6 +2,7 @@ package com.example.mobile_nfc_handler;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toolbar;
@@ -16,6 +17,7 @@ import com.example.mobile_nfc_handler.ui.settings.SettingsActivity;
 import com.example.mobile_nfc_handler.ui.showNFC.ShowNFCActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,4 +52,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
             return super.onOptionsItemSelected(item);
     }
+
+
 }

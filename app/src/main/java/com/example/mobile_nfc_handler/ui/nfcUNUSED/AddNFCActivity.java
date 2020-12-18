@@ -1,6 +1,4 @@
-package com.example.mobile_nfc_handler.ui.addNFC;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mobile_nfc_handler.ui.nfcUNUSED;
 
 import android.nfc.NfcAdapter;
 import android.os.Bundle;

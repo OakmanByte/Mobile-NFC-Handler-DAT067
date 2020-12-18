@@ -1,4 +1,4 @@
-package com.example.mobile_nfc_handler.ui.addNFC;
+package com.example.mobile_nfc_handler.ui.nfcUNUSED;
 
 import android.app.DialogFragment;
 import android.content.Context;

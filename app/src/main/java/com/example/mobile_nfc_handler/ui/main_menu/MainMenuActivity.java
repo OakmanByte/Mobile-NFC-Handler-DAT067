@@ -7,7 +7,7 @@ import android.widget.Button;
 import com.example.mobile_nfc_handler.R;
 import com.example.mobile_nfc_handler.BaseActivity;
 import com.example.mobile_nfc_handler.ui.UISetup;
-import com.example.mobile_nfc_handler.ui.addNFC.AddNFCActivity;
+import com.example.mobile_nfc_handler.ui.nfcUNUSED.AddNFCActivity;
 import com.example.mobile_nfc_handler.ui.showNFC.ShowNFCActivity;
 
 /**
@@ -34,7 +34,6 @@ public class MainMenuActivity extends BaseActivity implements UISetup {
         this.addCardButton = findViewById(R.id.addCardButton);
         this.showCardButton = findViewById(R.id.showCardButton);
     }
-
 
     @Override
     public void setUpListeners(){

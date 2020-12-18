@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class AddNFCActivity extends BaseActivity implements UISetup,NFCListener {
 
-    private Button addCardReturnButton;
     private Button addCardInActivityButton;
 
     private DatabaseReference mDatabase;
@@ -59,16 +58,10 @@ public class AddNFCActivity extends BaseActivity implements UISetup,NFCListener 
     @Override
     public void setUpComponents() {
         this.addCardInActivityButton = findViewById(R.id.addCardInActivityButton);
-        this.addCardReturnButton = findViewById(R.id.addCardReturnButton);
     }
 
     @Override
     public void setUpListeners() {
-        this.addCardReturnButton.setOnClickListener( e -> {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        });
-
         this.addCardInActivityButton.setOnClickListener( e -> {
             //TODOt
         });

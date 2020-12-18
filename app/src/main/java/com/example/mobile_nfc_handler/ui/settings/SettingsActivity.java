@@ -28,23 +28,10 @@ public class SettingsActivity extends BaseActivity {
         final SharedPreferences.Editor editor;
         editor = sharedPreferences.edit();
         final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false);
-
-
         System.out.println("is dark mode on? " + isDarkModeOn);
 
         darkModeSwitch.setChecked(isDarkModeOn);
 
-
-        /*
-        if (isDarkModeOn) { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            darkModeSwitch.setText("Disable Dark Mode");
-        }
-        else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            darkModeSwitch.setText("Enable Dark Mode");
-        }
-
-         */
 
         darkModeSwitch.setOnCheckedChangeListener((view,b) -> {
 
@@ -53,13 +40,10 @@ public class SettingsActivity extends BaseActivity {
 
             if (b) {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        darkModeSwitch.setText("Disable Dark Mode");
                     }
 
             else {
-                System.out.println("försöker sätta på lightmode :D");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    darkModeSwitch.setText("Enable Dark Mode");
                 }
 
             editor.putBoolean("isDarkModeOn", b);
